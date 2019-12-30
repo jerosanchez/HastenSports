@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class NetworkingService {
+class NetworkingService {
     
     // MARK: - Singleton
     
