@@ -22,3 +22,5 @@ extension Player: Decodable {
         case imageUrl = "image"
     }
 }
+
+extension Player: Equatable { }
