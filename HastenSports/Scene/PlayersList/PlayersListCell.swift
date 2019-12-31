@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PlayersListCell: UITableViewCell {
     
@@ -31,10 +32,10 @@ class PlayersListCell: UITableViewCell {
     
     // MARK: - API
     
-    func configure() {
-        picture.image = UIImage(named: "dummy_picture")
-        firstname.text = "Firstname"
-        lastname.text = "Lastname"
-        birthDate.text = "00/00/00"
+    func configure(player: Player) {
+        picture.sd_setImage(with: URL(string: player.imageUrl), placeholderImage: UIImage(named: "dummy_picture"))
+        firstname.text = player.firstname
+        lastname.text = player.lastname
+        birthDate.text = ""
     }
 }
