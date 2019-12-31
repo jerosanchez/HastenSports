@@ -16,8 +16,6 @@ extension UIView {
     }
     
     func fillSuperview(padding: UIEdgeInsets = .zero) {
-        translatesAutoresizingMaskIntoConstraints = false
-        
         if let superViewTopAnchor = superview?.topAnchor {
             topAnchor.constraint(equalTo: superViewTopAnchor, constant: padding.top).isActive = true
         }
@@ -30,5 +28,13 @@ extension UIView {
         if let superViewTrailingAnchor = superview?.trailingAnchor {
             trailingAnchor.constraint(equalTo: superViewTrailingAnchor, constant: -padding.right).isActive = true
         }
+    }
+    
+    func constrainWidth(constant: CGFloat) {
+        widthAnchor.constraint(equalToConstant: constant).isActive = true
+    }
+    
+    func constrainHeight(constant: CGFloat) {
+        heightAnchor.constraint(equalToConstant: constant).isActive = true
     }
 }

@@ -24,6 +24,7 @@ final class PlayersListController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         self.tableView.dataSource = dataSource
+        self.tableView.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -42,7 +43,7 @@ final class PlayersListController: UIViewController {
     // MARK: - Helpers
     
     private func registerCells() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.description())
+        tableView.register(PlayersListCell.self, forCellReuseIdentifier: PlayersListCell.description())
     }
     
     private func setupView() {
@@ -53,5 +54,13 @@ final class PlayersListController: UIViewController {
         tableView.fillSuperview()
         
         navigationItem.title = "HastenSports"
+    }
+}
+
+// MARK: - Delegates
+
+extension PlayersListController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }

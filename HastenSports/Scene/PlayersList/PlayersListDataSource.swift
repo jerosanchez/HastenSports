@@ -23,8 +23,8 @@ class PlayersListDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.description(), for: indexPath)
-        cell.textLabel?.text = "Row \(indexPath.row)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: PlayersListCell.description(), for: indexPath) as! PlayersListCell
+        cell.configure()
         return cell
     }
 }
