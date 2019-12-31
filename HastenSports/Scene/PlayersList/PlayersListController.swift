@@ -14,12 +14,16 @@ final class PlayersListController: UIViewController {
     
     private let tableView: UITableView
     private let dataSource: PlayersListDataSource
+    private let viewModel: PlayersListViewModel
     
     // MARK: - Initialization
     
     init() {
         self.tableView = UITableView()
         self.dataSource = PlayersListDataSource()
+        let networkingService = NetworkingService()
+        let repository = HastenSportsRemoteRepository(networkingService: networkingService)
+        self.viewModel = PlayersListViewModel(repository: repository)
         
         super.init(nibName: nil, bundle: nil)
         
@@ -38,6 +42,7 @@ final class PlayersListController: UIViewController {
         
         registerCells()
         setupView()
+        bindAndFire()
     }
     
     // MARK: - Helpers
@@ -54,6 +59,19 @@ final class PlayersListController: UIViewController {
         tableView.fillSuperview()
         
         navigationItem.title = "HastenSports"
+    }
+    
+    private func bindAndFire() {
+        viewModel.playersGroups.bind { playersGroups in
+            self.dataSource.playersGroups = playersGroups
+            self.tableView.reloadData()
+        }
+        viewModel.loadError.bind { error in
+            if let error = error {
+                print("Loading error: \(error.localizedDescription)")
+            }
+        }
+        viewModel.loadPlayers()
     }
 }
 

@@ -10,16 +10,22 @@ import UIKit
 
 class PlayersListDataSource: NSObject, UITableViewDataSource {
     
+    // MARK: - Properties
+    
+    var playersGroups = [PlayersGroup]()
+    
+    // MARK: - Implementation
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return playersGroups.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Section \(section)"
+        return playersGroups[section].name
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return playersGroups[section].players.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
