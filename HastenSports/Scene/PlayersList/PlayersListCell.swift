@@ -33,6 +33,8 @@ class PlayersListCell: UITableViewCell {
     // MARK: - API
     
     func configure(player: Player) {
+        accessoryType = .disclosureIndicator
+        
         picture.sd_setImage(with: URL(string: player.imageUrl), placeholderImage: UIImage(named: "dummy_picture"))
         firstname.text = player.firstname
         lastname.text = player.lastname
