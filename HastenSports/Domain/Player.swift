@@ -12,6 +12,7 @@ struct Player {
     let firstname: String
     let lastname: String
     let imageUrl: String
+    let birthDate: String?
 }
 
 extension Player: Decodable {
@@ -20,6 +21,7 @@ extension Player: Decodable {
         case firstname = "name"
         case lastname = "surname"
         case imageUrl = "image"
+        case birthDate = "date"
     }
 }
 

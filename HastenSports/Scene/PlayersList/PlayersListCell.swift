@@ -36,6 +36,10 @@ class PlayersListCell: UITableViewCell {
         picture.sd_setImage(with: URL(string: player.imageUrl), placeholderImage: UIImage(named: "dummy_picture"))
         firstname.text = player.firstname
         lastname.text = player.lastname
-        birthDate.text = ""
+        if let birthDate = player.birthDate {
+            self.birthDate.text = birthDate
+        } else {
+            birthDate.text = ""
+        }
     }
 }
