@@ -1,0 +1,34 @@
+//
+//  UIView+Extension.swift
+//  HastenSportsTests
+//
+//  Created by Jero Sánchez on 31/12/2019.
+//  Copyright © 2019 Jero Sánchez. All rights reserved.
+//
+
+import UIKit
+
+extension UIView {
+    
+    func addSubviewForAutolayout(_ subview: UIView) {
+        addSubview(subview)
+        subview.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func fillSuperview(padding: UIEdgeInsets = .zero) {
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        if let superViewTopAnchor = superview?.topAnchor {
+            topAnchor.constraint(equalTo: superViewTopAnchor, constant: padding.top).isActive = true
+        }
+        if let superViewLeadingAnchor = superview?.leadingAnchor {
+            leadingAnchor.constraint(equalTo: superViewLeadingAnchor, constant: padding.left).isActive = true
+        }
+        if let superViewBottomAnchor = superview?.bottomAnchor {
+            bottomAnchor.constraint(equalTo: superViewBottomAnchor, constant: -padding.bottom).isActive = true
+        }
+        if let superViewTrailingAnchor = superview?.trailingAnchor {
+            trailingAnchor.constraint(equalTo: superViewTrailingAnchor, constant: -padding.right).isActive = true
+        }
+    }
+}
