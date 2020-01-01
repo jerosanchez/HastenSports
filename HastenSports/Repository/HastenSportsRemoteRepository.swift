@@ -10,10 +10,6 @@ import Foundation
 
 class HastenSportsRemoteRepository: HastenSportsRepository {
     
-    // MARK: - Traits
-    
-    private let apiUrlString = "https://api.myjson.com/bins/66851"
-    
     // MARK: - Properties
     
     private let networkingService: NetworkingService
@@ -28,7 +24,7 @@ class HastenSportsRemoteRepository: HastenSportsRepository {
     
     func fetchPlayers(completion: @escaping (Result<[PlayersGroup], Error>) -> ()) {
         
-        networkingService.fetch(urlString: apiUrlString) { (result: Result<[PlayersGroup], Error>) in
+        networkingService.fetch(urlString: AppConfig.apiUrlString) { (result: Result<[PlayersGroup], Error>) in
             switch result {
             case .success(let groups):
                 completion(.success(groups))

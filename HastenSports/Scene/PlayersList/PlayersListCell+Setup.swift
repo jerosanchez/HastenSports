@@ -18,18 +18,20 @@ extension PlayersListCell {
         
         let nameStackView = VerticalStackView(arrangedSubviews: [
             UIView(), firstnameLabel, lastnameLabel, UIView()
-        ], spacing: 8)
+        ], spacing: AppConfig.Layout.reducedVerticalSpacing)
         nameStackView.distribution = .equalCentering
         
         let cellStackView = UIStackView(arrangedSubviews: [
             pictureStackView,
             nameStackView,
             birthDateLabel
-        ], customSpacing: 16)
+        ], customSpacing: AppConfig.Layout.standardVerticalSpacing)
         
         birthDateLabel.textAlignment = .right
         
         contentView.addSubviewForAutolayout(cellStackView)
-        cellStackView.fillSuperview(padding: .init(top: 16, left: 16, bottom: 16, right: 16))
+        let horizontalPadding = AppConfig.Layout.standardHorizontalPadding
+        let verticalPadding = AppConfig.Layout.standatdVerticalPadding
+        cellStackView.fillSuperview(padding: .init(top: verticalPadding, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding))
     }
 }

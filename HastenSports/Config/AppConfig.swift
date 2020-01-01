@@ -1,5 +1,5 @@
 //
-//  DependencyContainer.swift
+//  AppConfig.swift
 //  HastenSports
 //
 //  Created by Jero Sánchez on 31/12/2019.
@@ -8,7 +8,9 @@
 
 import Foundation
 
-struct DependencyContainer {
+struct AppConfig {
     
-    // Create an extension for each scene or type of component to assemble
+    static var appName = "HastenSports"
+    
+    static var apiUrlString = "https://api.myjson.com/bins/66851"
 }

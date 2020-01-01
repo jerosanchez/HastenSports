@@ -12,7 +12,15 @@ struct Player {
     let firstname: String
     let lastname: String
     let imageUrl: String
-    let birthDate: String? = nil
+    let birthDate: String?
+    
+    init(firstname: String, lastname: String, imageUrl: String, birthDate: String? = nil) {
+        
+        self.firstname = firstname
+        self.lastname = lastname
+        self.imageUrl = imageUrl
+        self.birthDate = birthDate
+    }
 }
 
 extension Player: Decodable {

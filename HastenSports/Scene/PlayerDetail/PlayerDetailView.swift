@@ -12,10 +12,10 @@ class PlayerDetailView: UIView {
     
     // MARK: - Subviews
     
-    let pictureImageView = UIImageView(cornerRadius: 80, width: 160, height: 160, bkColor: .init(white: 0.5, alpha: 0.2))
-    let firstnameLabel = UILabel(font: .boldSystemFont(ofSize: 24), numberOfLines: 1)
-    let lastnameLabel = UILabel(font: .boldSystemFont(ofSize: 24), numberOfLines: 1)
-    let birthDateLabel = UILabel(font: .systemFont(ofSize: 16), numberOfLines: 1)
+    let pictureImageView = UIImageView(cornerRadius: AppConfig.Layout.playerDetailPictureHeight / 2, width: AppConfig.Layout.playerDetailPictureHeight, height: AppConfig.Layout.playerDetailPictureHeight, bkColor: AppConfig.Colors.pictureBackgroundColor)
+    let firstnameLabel = UILabel(font: AppConfig.Fonts.playerDetailBoldFont)
+    let lastnameLabel = UILabel(font: AppConfig.Fonts.playerDetailBoldFont)
+    let birthDateLabel = UILabel(font: AppConfig.Fonts.playerDetailFont)
     
     // MARK: - Initialization
     
@@ -33,13 +33,13 @@ class PlayerDetailView: UIView {
     // MARK: - API
     
     func configureWith(_ player: Player) {
-        pictureImageView.sd_setImage(with: URL(string: player.imageUrl), placeholderImage: UIImage(named: "dummy_picture"))
+        pictureImageView.sd_setImage(with: URL(string: player.imageUrl), placeholderImage: AppConfig.Images.dummyPlayerPicture)
         firstnameLabel.text = player.firstname
         lastnameLabel.text = player.lastname
         if let birthDate = player.birthDate {
-            self.birthDateLabel.text = "Birth date: \(birthDate)"
+            self.birthDateLabel.text = "\(AppConfig.Literals.birthDate): \(birthDate)"
         } else {
-            self.birthDateLabel.text = "No birth date available"
+            self.birthDateLabel.text = AppConfig.Literals.noBirthDateAvailable
         }
     }
 }

@@ -56,13 +56,13 @@ class PlayersListController: UIViewController {
     }
     
     private func setupView() {
-        view.backgroundColor = .white
+        view.backgroundColor = AppConfig.Colors.sceneBackgroundColor
         
         let displayedController = navigationController?.viewControllers.first
         displayedController?.view.addSubviewForAutolayout(tableView)
         tableView.fillSuperview()
         
-        navigationItem.title = "HastenSports"
+        navigationItem.title = AppConfig.appName
     }
     
     private func bindAndFire() {

@@ -13,10 +13,10 @@ class PlayersListCell: UITableViewCell {
     
     // MARK: - Subviews
     
-    let pictureImageView = UIImageView(cornerRadius: 30, width: 60, height: 60, bkColor: .init(white: 0.5, alpha: 0.2))
-    let firstnameLabel = UILabel(font: .boldSystemFont(ofSize: 16), numberOfLines: 1)
-    let lastnameLabel = UILabel(font: .boldSystemFont(ofSize: 16), numberOfLines: 1)
-    let birthDateLabel = UILabel(font: .systemFont(ofSize: 16), numberOfLines: 1)
+    let pictureImageView = UIImageView(cornerRadius: AppConfig.Layout.playersListPictureHeight / 2, width: AppConfig.Layout.playersListPictureHeight, height: AppConfig.Layout.playersListPictureHeight, bkColor: AppConfig.Colors.pictureBackgroundColor)
+    let firstnameLabel = UILabel(font: AppConfig.Fonts.playersListBoldFont)
+    let lastnameLabel = UILabel(font: AppConfig.Fonts.playersListBoldFont)
+    let birthDateLabel = UILabel(font: AppConfig.Fonts.playersListFont)
     
     // MARK: - Initialization
     
@@ -35,13 +35,13 @@ class PlayersListCell: UITableViewCell {
     func configureWith(_ player: Player) {
         accessoryType = .disclosureIndicator
         
-        pictureImageView.sd_setImage(with: URL(string: player.imageUrl), placeholderImage: UIImage(named: "dummy_picture"))
+        pictureImageView.sd_setImage(with: URL(string: player.imageUrl), placeholderImage: AppConfig.Images.dummyPlayerPicture)
         firstnameLabel.text = player.firstname
         lastnameLabel.text = player.lastname
         if let birthDate = player.birthDate {
             self.birthDateLabel.text = birthDate
         } else {
-            birthDateLabel.text = ""
+            birthDateLabel.text = AppConfig.Literals.blankBirthDate
         }
     }
 }

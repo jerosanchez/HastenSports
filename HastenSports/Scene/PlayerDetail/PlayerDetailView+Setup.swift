@@ -11,7 +11,7 @@ import UIKit
 extension PlayerDetailView {
     
     func setupView() {
-        backgroundColor = .white
+        backgroundColor = AppConfig.Colors.sceneBackgroundColor
     }
     
     func setupLayout() {
@@ -23,7 +23,7 @@ extension PlayerDetailView {
         let nameStackView = VerticalStackView(arrangedSubviews: [
             firstnameLabel,
             lastnameLabel,
-        ], spacing: 4)
+        ], spacing: AppConfig.Layout.superReducedVerticalSpacing)
         nameStackView.alignment = .center
         
         let stackView = VerticalStackView(arrangedSubviews: [
@@ -31,7 +31,7 @@ extension PlayerDetailView {
             nameStackView,
             birthDateLabel,
             UIView()
-        ], spacing: 16)
+        ], spacing: AppConfig.Layout.standardVerticalSpacing)
         stackView.alignment = .center
         
         addSubviewForAutolayout(stackView)
@@ -39,6 +39,8 @@ extension PlayerDetailView {
         // safeAreaLayoutGuide is available only as of iOS11;
         // topLayoutGuide used in iOS9 was deprecated,
         // so we have to manually layout top of stack view to skip navigation bar
-        stackView.fillSuperview(padding: .init(top: 116, left: 16, bottom: 16, right: 16))
+        let verticalPadding = AppConfig.Layout.standatdVerticalPadding
+        let horizontalPadding = AppConfig.Layout.standardHorizontalPadding
+        stackView.fillSuperview(padding: .init(top: verticalPadding + 100, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding))
     }
 }
