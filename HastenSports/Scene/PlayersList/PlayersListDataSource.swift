@@ -32,7 +32,7 @@ class PlayersListDataSource: NSObject, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: PlayersListCell.description(), for: indexPath) as! PlayersListCell
         let playersGroup = playersGroups[indexPath.section]
         let player = playersGroup.players[indexPath.row]
-        cell.configure(player: player)
+        cell.configureWith(player)
         return cell
     }
 }

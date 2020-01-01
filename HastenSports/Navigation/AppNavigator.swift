@@ -18,7 +18,7 @@ class AppNavigator {
     // MARK: - API
     
     func start() {
-        let playersListController = PlayersListController()
+        let playersListController = DependencyContainer.playersListController
         playersListController.navigator = self
         navController = UINavigationController(rootViewController: playersListController)
         

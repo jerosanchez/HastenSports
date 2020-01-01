@@ -12,7 +12,7 @@ struct Player {
     let firstname: String
     let lastname: String
     let imageUrl: String
-    let birthDate: String?
+    let birthDate: String? = nil
 }
 
 extension Player: Decodable {

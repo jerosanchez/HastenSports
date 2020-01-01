@@ -24,12 +24,10 @@ class PlayersListController: UIViewController {
     
     // MARK: - Initialization
     
-    init() {
+    init(dataSource: PlayersListDataSource, viewModel: PlayersListViewModel) {
         self.tableView = UITableView()
-        self.dataSource = PlayersListDataSource()
-        let networkingService = NetworkingService()
-        let repository = HastenSportsRemoteRepository(networkingService: networkingService)
-        self.viewModel = PlayersListViewModel(repository: repository)
+        self.dataSource = dataSource
+        self.viewModel = viewModel
         
         super.init(nibName: nil, bundle: nil)
         

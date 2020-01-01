@@ -9,6 +9,7 @@
 import XCTest
 
 @testable import HastenSports
+@testable import SDWebImage
 class PlayerTests: XCTestCase {
 
     override func setUp() { }

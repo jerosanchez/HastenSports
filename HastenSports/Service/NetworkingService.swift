@@ -10,10 +10,6 @@ import Foundation
 
 class NetworkingService {
     
-    // MARK: - Singleton
-    
-    static var shared = NetworkingService()
-    
     // MARK: - API
     
     func fetch<T: Decodable>(urlString: String, completion: @escaping (Result<T, Error>) -> ()) {

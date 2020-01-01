@@ -20,7 +20,7 @@ class HastenSportsRemoteRepository: HastenSportsRepository {
     
     // MARK: - Initialization
     
-    init(networkingService: NetworkingService = NetworkingService.shared) {
+    init(networkingService: NetworkingService) {
         self.networkingService = networkingService
     }
     

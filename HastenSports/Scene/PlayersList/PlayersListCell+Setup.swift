@@ -12,22 +12,22 @@ extension PlayersListCell {
     
     func setupLayout() {
         let pictureStackView = VerticalStackView(arrangedSubviews: [
-            UIView(), picture, UIView()
+            UIView(), pictureImageView, UIView()
         ])
         pictureStackView.distribution = .equalCentering
         
         let nameStackView = VerticalStackView(arrangedSubviews: [
-            UIView(), firstname, lastname, UIView()
+            UIView(), firstnameLabel, lastnameLabel, UIView()
         ], spacing: 8)
         nameStackView.distribution = .equalCentering
         
         let cellStackView = UIStackView(arrangedSubviews: [
             pictureStackView,
             nameStackView,
-            birthDate
+            birthDateLabel
         ], customSpacing: 16)
         
-        birthDate.textAlignment = .right
+        birthDateLabel.textAlignment = .right
         
         contentView.addSubviewForAutolayout(cellStackView)
         cellStackView.fillSuperview(padding: .init(top: 16, left: 16, bottom: 16, right: 16))
