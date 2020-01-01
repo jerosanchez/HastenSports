@@ -14,6 +14,18 @@ class PlayerDetailController: UIViewController {
     
     private let sceneView = PlayerDetailView()
     
+    // MARK: - Initialization
+    
+    init(player: Player) {
+        super.init(nibName: nil, bundle: nil)
+        
+        sceneView.configureWith(player)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Lifecycle
     
     override func loadView() {

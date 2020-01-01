@@ -83,7 +83,9 @@ extension PlayersListController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = PlayerDetailController()
+        let playersGroup = dataSource.playersGroups[indexPath.section]
+        let player = playersGroup.players[indexPath.row]
+        let detailVC = PlayerDetailController(player: player)
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
