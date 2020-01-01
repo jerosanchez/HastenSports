@@ -12,19 +12,14 @@ class PlayerDetailController: UIViewController {
     
     // MARK: - Properties
     
+    var player: Player? {
+        didSet {
+            guard let player = player else { return }
+            sceneView.configureWith(player)
+        }
+    }
+    
     private let sceneView = PlayerDetailView()
-    
-    // MARK: - Initialization
-    
-    init(player: Player) {
-        super.init(nibName: nil, bundle: nil)
-        
-        sceneView.configureWith(player)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     // MARK: - Lifecycle
     

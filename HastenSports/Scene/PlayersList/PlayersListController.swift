@@ -8,9 +8,15 @@
 
 import UIKit
 
-final class PlayersListController: UIViewController {
+protocol PlayersListNavigationLogic {
+    func navigateToPlayerDetail(player: Player)
+}
+
+class PlayersListController: UIViewController {
     
     // MARK: - Properties
+    
+    var navigator: PlayersListNavigationLogic?
     
     private let tableView: UITableView
     private let dataSource: PlayersListDataSource
@@ -85,7 +91,6 @@ extension PlayersListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let playersGroup = dataSource.playersGroups[indexPath.section]
         let player = playersGroup.players[indexPath.row]
-        let detailVC = PlayerDetailController(player: player)
-        navigationController?.pushViewController(detailVC, animated: true)
+        navigator?.navigateToPlayerDetail(player: player)
     }
 }
