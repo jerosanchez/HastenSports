@@ -8,4 +8,7 @@
 
 import Foundation
 
-class DependencyContainer { }
+class DependencyContainer {
+    
+    // Create an extension for each scene or type of component to assemble
+}

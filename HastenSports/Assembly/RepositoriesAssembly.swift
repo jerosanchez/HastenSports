@@ -10,7 +10,7 @@ import Foundation
 
 extension DependencyContainer {
     
-    static var remoteRepository: HastenSportsRemoteRepository {
+    static var remoteRepository: HastenSportsRepository {
         return HastenSportsRemoteRepository(
             networkingService: networkingService)
     }
