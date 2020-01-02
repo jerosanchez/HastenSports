@@ -8,7 +8,7 @@
 
 import Foundation
 
-class NetworkingService {
+class URLSessionNetworkingService: NetworkingService {
     
     // MARK: - API
     

@@ -72,7 +72,7 @@ private var dummyJSONString: String {
     """
 }
 
-private class SpyNetworkingService: NetworkingService {
+private class SpyNetworkingService: URLSessionNetworkingService {
     
     // MARK: - Properties
     

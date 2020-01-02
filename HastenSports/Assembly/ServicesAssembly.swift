@@ -11,6 +11,6 @@ import Foundation
 extension DependencyContainer {
     
     static var networkingService: NetworkingService {
-        return NetworkingService()
+        return URLSessionNetworkingService()
     }
 }
