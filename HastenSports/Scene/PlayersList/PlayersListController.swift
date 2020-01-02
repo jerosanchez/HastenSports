@@ -87,6 +87,8 @@ extension PlayersListController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         let playersGroup = dataSource.playersGroups[indexPath.section]
         let player = playersGroup.players[indexPath.row]
         navigator?.navigateToPlayerDetail(player: player)
