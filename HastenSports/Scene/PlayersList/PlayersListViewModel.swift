@@ -14,7 +14,7 @@ class PlayersListViewModel {
     
     var playersGroups = Observable<[PlayersGroup]>(value: [])
     
-    var loadError = Observable<Error?>(value: nil)
+    var loadingError = Observable<Error?>(value: nil)
     
     // MARK: - Dependencies
     
@@ -34,7 +34,7 @@ class PlayersListViewModel {
             case .success(let playersGroups):
                 self.playersGroups.value = playersGroups
             case .failure(let error):
-                self.loadError.value = error
+                self.loadingError.value = error
             }
         }
     }

@@ -66,12 +66,12 @@ class PlayersListController: UIViewController {
             self.dataSource.playersGroups = playersGroups
             self.tableView.reloadData()
         }
-        viewModel.loadError.bind { error in
+        viewModel.loadingError.bind { error in
             self.spinnerView.stopAnimating()
             
-            if let error = error {
-                print("Loading error: \(error.localizedDescription)")
-            }
+            // Should not be executed with an error nil,
+            // but I prefer not to use the bang operator just in case
+            print("Loading error: \(error?.localizedDescription ?? "Something weird happened... :-(")")
         }
         viewModel.loadPlayers()
     }

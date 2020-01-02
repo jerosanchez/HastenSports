@@ -18,9 +18,11 @@ class AppNavigator {
     // MARK: - API
     
     func start() {
-        let playersListController = DependencyContainer.playersListController
-        playersListController.navigator = self
-        navController = UINavigationController(rootViewController: playersListController)
+        // Initialize homeController with a different controller
+        // to change how the app starts
+        let homeController = DependencyContainer.playersListController
+        homeController.navigator = self
+        navController = UINavigationController(rootViewController: homeController)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navController

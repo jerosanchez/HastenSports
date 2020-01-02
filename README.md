@@ -36,7 +36,7 @@ The code base is organized in the following folders:
 - Config - A struct organized with extensions to keep a central place to setup key app behaviours 
 - Domain - Domain models; for simplicity, we use the same models for both web services and the app (no mapper is used)
 - Helpers - Some useful UIKit extensions and classes, and the Observable facility to build our MVVM architecture
-- Navigation - A simple navigation mechanism to keep all scenes decoupled form each other
+- Navigation - A simple navigation mechanism to keep all scenes decoupled from each other
 - Repository - The single access point to our data (either remote or local) so we don't need to couple scenes to the network layer 
 - Scene - One subfolder per scene, each one including necessary controllers, subviews, view models, etc.
 - Service - Gateway layer between our app and third-party frameworks so it's easy to exchange concrete implementations
