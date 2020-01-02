@@ -18,9 +18,11 @@ class PlayersListController: UIViewController {
     
     var navigator: PlayersListNavigationLogic?
     
-    private let tableView: UITableView
+    private(set) var tableView: UITableView
     private let dataSource: PlayersListDataSource
     private let viewModel: PlayersListViewModel
+    
+    private(set) var spinnerView = UIActivityIndicatorView(style: .gray)
     
     // MARK: - Initialization
     
@@ -46,6 +48,7 @@ class PlayersListController: UIViewController {
         
         registerCells()
         setupView()
+        
         bindAndFire()
     }
     
@@ -55,22 +58,17 @@ class PlayersListController: UIViewController {
         tableView.register(PlayersListCell.self, forCellReuseIdentifier: PlayersListCell.description())
     }
     
-    private func setupView() {
-        view.backgroundColor = AppConfig.Colors.sceneBackgroundColor
-        
-        let displayedController = navigationController?.viewControllers.first
-        displayedController?.view.addSubviewForAutolayout(tableView)
-        tableView.fillSuperview()
-        
-        navigationItem.title = AppConfig.appName
-    }
-    
     private func bindAndFire() {
         viewModel.playersGroups.bind { playersGroups in
+            self.spinnerView.stopAnimating()
+            self.tableView.isHidden = false
+            
             self.dataSource.playersGroups = playersGroups
             self.tableView.reloadData()
         }
         viewModel.loadError.bind { error in
+            self.spinnerView.stopAnimating()
+            
             if let error = error {
                 print("Loading error: \(error.localizedDescription)")
             }

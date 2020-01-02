@@ -72,7 +72,7 @@ private var dummyJSONString: String {
     """
 }
 
-private class SpyNetworkingService: URLSessionNetworkingService {
+private class SpyNetworkingService: NetworkingService {
     
     // MARK: - Properties
     
@@ -88,7 +88,7 @@ private class SpyNetworkingService: URLSessionNetworkingService {
     
     // MARK: - Implementation
     
-    override func fetch<T: Decodable>(urlString: String, completion: @escaping (Result<T, Error>) -> ()) {
+    func fetch<T: Decodable>(urlString: String, completion: @escaping (Result<T, Error>) -> ()) {
         apiUrlString = urlString
         
         if let result = try? JSONDecoder().decode(T.self, from: jsonString.data(using: .utf8)!) {

@@ -32,6 +32,10 @@ class Observable<T> {
     
     func bind(observer: @escaping Observer) {
         observers.append(observer)
+    }
+    
+    func bindAndNotify(observer: @escaping Observer) {
+        bind(observer: observer)
         observer(value)
     }
     

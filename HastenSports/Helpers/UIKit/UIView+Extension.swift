@@ -37,4 +37,13 @@ extension UIView {
     func constrainHeight(constant: CGFloat) {
         heightAnchor.constraint(equalToConstant: constant).isActive = true
     }
+    
+    func centerInSuperview() {
+        if let superview = superview {
+            NSLayoutConstraint.activate([
+                centerXAnchor.constraint(equalTo: superview.centerXAnchor),
+                centerYAnchor.constraint(equalTo: superview.centerYAnchor)
+            ])
+        }
+    }
 }

@@ -27,13 +27,13 @@ class ObservableTests: XCTestCase {
     
     // MARK: - Bind
     
-    func test_Bind_WhenBinded_GetsNotified() {
+    func test_BindAndNotify_WhenBinded_GetsNotified() {
         let randomString = UUID().description
         
         let expectation = XCTestExpectation(description: "Initial value is notified")
         
         let sut = stringObservable(withValue: randomString)
-        sut.bind { value in
+        sut.bindAndNotify { value in
             XCTAssertEqual(randomString, value)
             expectation.fulfill()
         }
@@ -47,13 +47,9 @@ class ObservableTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Changed value is notified")
         
         let sut = stringObservable(withValue: randomString)
-        var notificationsCount = 0
         sut.bind { value in
-            notificationsCount += 1
-            if notificationsCount == 2 {
-                XCTAssertNotEqual(randomString, value)
-                expectation.fulfill()
-            }
+            XCTAssertNotEqual(randomString, value)
+            expectation.fulfill()
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + Double.random(in: 1...4)) {
