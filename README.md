@@ -49,7 +49,6 @@ Below are some possible improvements that can be tackled:
 
 - Add unit tests also for scenes components
 - Add a Hasten Sports app icon
-- Add an activity indicator while loading players list
 
 ## Credits
 
